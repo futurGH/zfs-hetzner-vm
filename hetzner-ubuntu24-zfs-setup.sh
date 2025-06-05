@@ -457,8 +457,8 @@ clear
 
 echo "===========remove unused kernels in rescue system========="
 for kver in $(find /lib/modules/* -maxdepth 0 -type d | grep -v "$(uname -r)" | cut -s -d "/" -f 4); do
-  apt purge --yes "linux-headers-$kver"
-  apt purge --yes "linux-image-$kver"
+  apt purge --yes "linux-headers-$kver" 2>/dev/null
+  apt purge --yes "linux-image-$kver" 2>/dev/null
 done
 
 echo "======= installing zfs on rescue system =========="
